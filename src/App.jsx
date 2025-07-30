@@ -1,19 +1,43 @@
-import { useState } from 'react'
-import './App.css'
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import NavBar from './components/NavBar';
+import HeroSection from './components/HeroSection';
+import Features from './components/Features';
+import WhySkillPilot from './components/WhySkillPilot';
 
 function App() {
-  const [count, setCount] = useState(0)
+useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration in ms
+      once: true,    // Whether animation should happen only once
+    });
+  }, []);
 
   return (
     <>
+
+    <NavBar />
+    <HeroSection />
+    < Features/>
+    <WhySkillPilot />
+      {/* <div className="container mt-5">
+        <div className="row">
+          <div className="col-md-6">
+            <h2>Welcome to SkillPilot!</h2>
+            <p>This is your Bootstrap-powered React app.</p>
+          </div>
+           <div className="col-md-6">
+             <img src="https://via.placeholder.com/300" className="img-fluid" />
+           </div>
+        </div>
+      </div> */}
+
     
-      <h1>Skill Pilot Initial set up</h1>
-    
-      <p className="">
-        
-      </p>
     </>
-  )
+    
+  );
 }
 
-export default App
+export default App;
+
