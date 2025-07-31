@@ -5,7 +5,10 @@ import NavBar from './components/NavBar';
 import HeroSection from './components/HeroSection';
 import Features from './components/Features';
 import WhySkillPilot from './components/WhySkillPilot';
-
+import LearningTracks from './components/LearningTracks'
+import ScrollToTop from './components/ScrollToTop';
+import JoinCommunity from './components/JoinCommunity';
+import Footer from './components/Footer';
 function App() {
 useEffect(() => {
     AOS.init({
@@ -21,6 +24,11 @@ useEffect(() => {
     <HeroSection />
     < Features/>
     <WhySkillPilot />
+     <LearningTracks/>
+     <ScrollToTop/>
+     <JoinCommunity/>
+       <Footer/>
+     
       {/* <div className="container mt-5">
         <div className="row">
           <div className="col-md-6">
