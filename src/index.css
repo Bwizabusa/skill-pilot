@@ -30,6 +30,34 @@
 }
 
 /* ============================================================================================
+                        Styling HeroSection
+============================================================================================ */
+.hero-section {
+  margin-top: 50px; /* or whatever your navbar height is */
+}
+
+.hero-section {
+  transition: margin-top 0.3s ease;
+}
+
+.hero-section.menu-expanded {
+  margin-top: 280px; /* adjust this value if your mobile menu is taller or shorter */
+}
+
+@media (min-width: 992px) {
+  .hero-section.menu-expanded {
+    margin-top: 0 !important;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .hero-section {
+    margin-top: 180px; 
+    background-color: #0056b3;
+  }
+} */
+
+/* ============================================================================================
                         Styling Learning Tracks for Tab Underline
 ============================================================================================ */
 
