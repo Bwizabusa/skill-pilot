@@ -110,6 +110,16 @@
  align-items: center;
 }
 
+#tracks .nav-link {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#tracks .tab-content {
+  min-height: 150px;
+}
+
+
 /* ============================================================================================
                         Styling ScrollToTop component
 ============================================================================================ */

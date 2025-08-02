@@ -270,110 +270,221 @@
 
 // export default LearningTracks;
 
-import React, { useState } from 'react';
-import 'aos/dist/aos.css';
-import { BsRocket, BsLightningCharge, BsStars } from 'react-icons/bs';
+// import React, { useState } from 'react';
+// import 'aos/dist/aos.css';
+// import { BsRocket, BsLightningCharge, BsStars } from 'react-icons/bs';
+
+// const LearningTracks = () => {
+//   const [activeTab, setActiveTab] = useState('basic');
+
+//   const basicTrack = [
+//     { title: 'HTML & CSS', description: 'Learn to structure and style your websites.' },
+//     { title: 'JavaScript Basics', description: 'Understand core programming with JS.' },
+//     { title: 'Responsive Design', description: 'Make your site mobile-friendly using Bootstrap.' },
+//     { title: 'Git & GitHub', description: 'Track changes and collaborate on code.' },
+//     { title: 'Basic Projects', description: 'Build simple websites to apply your skills.' },
+//     { title: 'Portfolio Setup', description: 'Publish your work and create your brand.' },
+//   ];
+
+//   const intermediateTrack = [
+//     { title: 'JavaScript DOM', description: 'Manipulate elements and build dynamic UIs.' },
+//     { title: 'ES6+ & Modules', description: 'Write modern, scalable JavaScript code.' },
+//     { title: 'React Fundamentals', description: 'Build component-based UIs.' },
+//     { title: 'Routing & State', description: 'Handle navigation and data flow in React.' },
+//     { title: 'APIs & Fetch', description: 'Consume APIs to show real data.' },
+//     { title: 'Intermediate Projects', description: 'Build interactive apps like to-do lists or blogs.' },
+//   ];
+
+//   const advancedTrack = [
+//     { title: 'Authentication', description: 'Implement login/signup features securely.' },
+//     { title: 'React Performance', description: 'Optimize speed and load time.' },
+//     { title: 'Backend with Django', description: 'Connect frontend to powerful backends.' },
+//     { title: 'Full-stack Projects', description: 'Create full web applications with React + Django.' },
+//     { title: 'Deployment & CI/CD', description: 'Publish your apps and automate workflows.' },
+//     { title: 'Job Preparation', description: 'Prepare for freelance & job opportunities.' },
+//   ];
+
+//   const tabs = [
+//     { id: 'basic', label: 'Basic Track', icon: <BsRocket /> },
+//     { id: 'intermediate', label: 'Intermediate Track', icon: <BsLightningCharge /> },
+//     { id: 'advanced', label: 'Advanced Track', icon: <BsStars /> },
+//   ];
+
+//   const trackData = {
+//     basic: basicTrack,
+//     intermediate: intermediateTrack,
+//     advanced: advancedTrack,
+//   };
+
+//   return (
+//     <section className="py-5 bg-light" id="learning-tracks">
+//       <div className="container">
+//         <div className="text-center mb-5" data-aos="fade-up">
+//           <h2 className="fw-bold">Learning Tracks</h2>
+//           <p className="text-muted">Choose your path and grow your skills step by step.</p>
+//         </div>
+
+//         {/* Tabs */}
+//         <div className="d-flex justify-content-center mb-4">
+//           {tabs.map((tab) => (
+//             <button
+//               key={tab.id}
+//               onClick={() => setActiveTab(tab.id)}
+//               className={`btn me-3 position-relative ${
+//                 activeTab === tab.id ? 'text-primary fw-bold border-0' : 'text-secondary'
+//               }`}
+//               style={{
+//                 background: 'none',
+//                 fontSize: '1.1rem',
+//               }}
+//             >
+//               <span className="me-1">{tab.icon}</span>
+//               {tab.label}
+//               {activeTab === tab.id && (
+//                 <div
+//                   className="position-absolute start-0 bottom-0 w-100"
+//                   style={{ height: '3px', background: '#0d6efd', borderRadius: '2px' }}
+//                 ></div>
+//               )}
+//             </button>
+//           ))}
+//         </div>
+
+//         {/* Cards */}
+//         <div className="row g-4">
+//           {trackData[activeTab].map((step, index) => (
+//             <div
+//               key={index}
+//               className="col-md-6 col-lg-4"
+//               data-aos="fade-up"
+//               data-aos-delay={index * 100}
+//             >
+//               <div className="card h-100 shadow-sm border-0">
+//                 <div className="card-body">
+//                   <div className="mb-3 text-primary fs-2">
+//                     {activeTab === 'basic' && <BsRocket />}
+//                     {activeTab === 'intermediate' && <BsLightningCharge />}
+//                     {activeTab === 'advanced' && <BsStars />}
+//                   </div>
+//                   <h5 className="card-title">{step.title}</h5>
+//                   <p className="card-text">{step.description}</p>
+//                   <button className="btn btn-outline-primary mt-3">Start Learning</button>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default LearningTracks;
+
+import React, { useState, useEffect } from "react";
+// import "./LearningTracks.css"; // optional for extra styling
+
+const tracks = [
+  {
+    id: "frontend",
+    title: "Front-End Development",
+    content:
+      "Learn HTML, CSS, JavaScript, React, and responsive design to build stunning user interfaces.",
+  },
+  {
+    id: "backend",
+    title: "Back-End Development",
+    content:
+      "Master databases, Django, REST APIs, and server-side logic to power your applications.",
+  },
+  {
+    id: "data",
+    title: "Data Analysis",
+    content:
+      "Get started with Python, Excel, SQL, and data visualization techniques.",
+  },
+  {
+    id: "ai",
+    title: "AI & Machine Learning",
+    content:
+      "Explore machine learning, neural networks, and practical AI applications.",
+  },
+];
 
 const LearningTracks = () => {
-  const [activeTab, setActiveTab] = useState('basic');
+  const [activeTab, setActiveTab] = useState("frontend");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  const basicTrack = [
-    { title: 'HTML & CSS', description: 'Learn to structure and style your websites.' },
-    { title: 'JavaScript Basics', description: 'Understand core programming with JS.' },
-    { title: 'Responsive Design', description: 'Make your site mobile-friendly using Bootstrap.' },
-    { title: 'Git & GitHub', description: 'Track changes and collaborate on code.' },
-    { title: 'Basic Projects', description: 'Build simple websites to apply your skills.' },
-    { title: 'Portfolio Setup', description: 'Publish your work and create your brand.' },
-  ];
-
-  const intermediateTrack = [
-    { title: 'JavaScript DOM', description: 'Manipulate elements and build dynamic UIs.' },
-    { title: 'ES6+ & Modules', description: 'Write modern, scalable JavaScript code.' },
-    { title: 'React Fundamentals', description: 'Build component-based UIs.' },
-    { title: 'Routing & State', description: 'Handle navigation and data flow in React.' },
-    { title: 'APIs & Fetch', description: 'Consume APIs to show real data.' },
-    { title: 'Intermediate Projects', description: 'Build interactive apps like to-do lists or blogs.' },
-  ];
-
-  const advancedTrack = [
-    { title: 'Authentication', description: 'Implement login/signup features securely.' },
-    { title: 'React Performance', description: 'Optimize speed and load time.' },
-    { title: 'Backend with Django', description: 'Connect frontend to powerful backends.' },
-    { title: 'Full-stack Projects', description: 'Create full web applications with React + Django.' },
-    { title: 'Deployment & CI/CD', description: 'Publish your apps and automate workflows.' },
-    { title: 'Job Preparation', description: 'Prepare for freelance & job opportunities.' },
-  ];
-
-  const tabs = [
-    { id: 'basic', label: 'Basic Track', icon: <BsRocket /> },
-    { id: 'intermediate', label: 'Intermediate Track', icon: <BsLightningCharge /> },
-    { id: 'advanced', label: 'Advanced Track', icon: <BsStars /> },
-  ];
-
-  const trackData = {
-    basic: basicTrack,
-    intermediate: intermediateTrack,
-    advanced: advancedTrack,
-  };
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <section className="py-5 bg-light" id="learning-tracks">
+    <section id="tracks" className="py-5 bg-light">
       <div className="container">
-        <div className="text-center mb-5" data-aos="fade-up">
-          <h2 className="fw-bold">Learning Tracks</h2>
-          <p className="text-muted">Choose your path and grow your skills step by step.</p>
-        </div>
+        <h2 className="text-center mb-4 fw-bold">Explore Learning Tracks</h2>
 
-        {/* Tabs */}
-        <div className="d-flex justify-content-center mb-4">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`btn me-3 position-relative ${
-                activeTab === tab.id ? 'text-primary fw-bold border-0' : 'text-secondary'
-              }`}
-              style={{
-                background: 'none',
-                fontSize: '1.1rem',
-              }}
-            >
-              <span className="me-1">{tab.icon}</span>
-              {tab.label}
-              {activeTab === tab.id && (
+        {isMobile ? (
+          // Mobile view: Accordion
+          <div className="accordion" id="trackAccordion">
+            {tracks.map((track) => (
+              <div className="accordion-item" key={track.id}>
+                <h2 className="accordion-header" id={`heading-${track.id}`}>
+                  <button
+                    className={`accordion-button ${
+                      activeTab !== track.id ? "collapsed" : ""
+                    }`}
+                    type="button"
+                    onClick={() =>
+                      setActiveTab((prev) => (prev === track.id ? "" : track.id))
+                    }
+                  >
+                    {track.title}
+                  </button>
+                </h2>
                 <div
-                  className="position-absolute start-0 bottom-0 w-100"
-                  style={{ height: '3px', background: '#0d6efd', borderRadius: '2px' }}
-                ></div>
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* Cards */}
-        <div className="row g-4">
-          {trackData[activeTab].map((step, index) => (
-            <div
-              key={index}
-              className="col-md-6 col-lg-4"
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              <div className="card h-100 shadow-sm border-0">
-                <div className="card-body">
-                  <div className="mb-3 text-primary fs-2">
-                    {activeTab === 'basic' && <BsRocket />}
-                    {activeTab === 'intermediate' && <BsLightningCharge />}
-                    {activeTab === 'advanced' && <BsStars />}
-                  </div>
-                  <h5 className="card-title">{step.title}</h5>
-                  <p className="card-text">{step.description}</p>
-                  <button className="btn btn-outline-primary mt-3">Start Learning</button>
+                  id={`collapse-${track.id}`}
+                  className={`accordion-collapse collapse ${
+                    activeTab === track.id ? "show" : ""
+                  }`}
+                  aria-labelledby={`heading-${track.id}`}
+                  data-bs-parent="#trackAccordion"
+                >
+                  <div className="accordion-body">{track.content}</div>
                 </div>
               </div>
+            ))}
+          </div>
+        ) : (
+          // Desktop view: Tabs
+          <>
+            <ul className="nav nav-tabs justify-content-center mb-3">
+              {tracks.map((track) => (
+                <li className="nav-item" key={track.id}>
+                  <button
+                    className={`nav-link ${activeTab === track.id ? "active" : ""}`}
+                    onClick={() => setActiveTab(track.id)}
+                  >
+                    {track.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <div className="tab-content bg-white p-4 border rounded shadow-sm">
+              {tracks.map(
+                (track) =>
+                  activeTab === track.id && (
+                    <div className="tab-pane fade show active" key={track.id}>
+                      <p>{track.content}</p>
+                    </div>
+                  )
+              )}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
     </section>
   );
