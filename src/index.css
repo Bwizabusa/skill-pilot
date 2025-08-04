@@ -140,3 +140,47 @@
   transform: scale(1.15);
   box-shadow: 0 0 12px rgba(13, 110, 253, 0.6);
 }
+
+/* ==========================================================================================================
+                                                Join Community
+========================================================================================================== */
+
+.floating-icon {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-icon.bg-primary {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  left: 10%;
+}
+
+.floating-icon.bg-success {
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  right: 15%;
+}
+
+.floating-icon.bg-danger {
+  width: 30px;
+  height: 30px;
+  bottom: 10%;
+  left: 50%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

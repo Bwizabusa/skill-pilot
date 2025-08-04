@@ -1,0 +1,44 @@
+#tracks {
+  background: linear-gradient(180deg, #f4f7fc, #eaeff6);
+}
+
+/* Accordion Styles */
+.accordion-button {
+  font-weight: 500;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+.accordion-button:not(.collapsed) {
+  background-color: #d8eafd;
+  color: #0d6efd;
+}
+.accordion-body {
+  background-color: #fff;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Tabs Styles */
+.nav-tabs .nav-link {
+  font-weight: 500;
+  color: #0d6efd;
+  border: 1px solid transparent;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.nav-tabs .nav-link:hover {
+  background-color: #eff6ff;
+}
+.nav-tabs .nav-link.active {
+  background-color: #d8eafd;
+  font-weight: 600;
+  border-color: #d8eafd #d8eafd #fff;
+}
+
+/* Tab Content Box */
+.tab-content {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  min-height: 150px;
+  transition: all 0.3s ease-in-out;
+}

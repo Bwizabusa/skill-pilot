@@ -381,110 +381,338 @@
 
 // export default LearningTracks;
 
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 // import "./LearningTracks.css"; // optional for extra styling
 
-const tracks = [
-  {
-    id: "frontend",
-    title: "Front-End Development",
-    content:
-      "Learn HTML, CSS, JavaScript, React, and responsive design to build stunning user interfaces.",
-  },
-  {
-    id: "backend",
-    title: "Back-End Development",
-    content:
-      "Master databases, Django, REST APIs, and server-side logic to power your applications.",
-  },
-  {
-    id: "data",
-    title: "Data Analysis",
-    content:
-      "Get started with Python, Excel, SQL, and data visualization techniques.",
-  },
-  {
-    id: "ai",
-    title: "AI & Machine Learning",
-    content:
-      "Explore machine learning, neural networks, and practical AI applications.",
-  },
-];
+// const tracks = [
+//   {
+//     id: "frontend",
+//     title: "Front-End Development",
+//     content:
+//       "Learn HTML, CSS, JavaScript, React, and responsive design to build stunning user interfaces.",
+//   },
+//   {
+//     id: "backend",
+//     title: "Back-End Development",
+//     content:
+//       "Master databases, Django, REST APIs, and server-side logic to power your applications.",
+//   },
+//   {
+//     id: "data",
+//     title: "Data Analysis",
+//     content:
+//       "Get started with Python, Excel, SQL, and data visualization techniques.",
+//   },
+//   {
+//     id: "ai",
+//     title: "AI & Machine Learning",
+//     content:
+//       "Explore machine learning, neural networks, and practical AI applications.",
+//   },
+// ];
+
+
+
+
+// const LearningTracks = () => {
+//   const [activeTab, setActiveTab] = useState("frontend");
+//   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+//   useEffect(() => {
+//     const handleResize = () => setIsMobile(window.innerWidth < 768);
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   return (
+//     <section id="tracks" className="py-5 bg-light">
+//       <div className="container">
+//         <h2 className="text-center mb-4 fw-bold">Explore Learning Tracks</h2>
+
+//         {isMobile ? (
+//           // Mobile view: Accordion
+//           <div className="accordion" id="trackAccordion">
+//             {tracks.map((track) => (
+//               <div className="accordion-item" key={track.id}>
+//                 <h2 className="accordion-header" id={`heading-${track.id}`}>
+//                   <button
+//                     className={`accordion-button ${
+//                       activeTab !== track.id ? "collapsed" : ""
+//                     }`}
+//                     type="button"
+//                     onClick={() =>
+//                       setActiveTab((prev) => (prev === track.id ? "" : track.id))
+//                     }
+//                   >
+//                     {track.title}
+//                   </button>
+//                 </h2>
+//                 <div
+//                   id={`collapse-${track.id}`}
+//                   className={`accordion-collapse collapse ${
+//                     activeTab === track.id ? "show" : ""
+//                   }`}
+//                   aria-labelledby={`heading-${track.id}`}
+//                   data-bs-parent="#trackAccordion"
+//                 >
+//                   <div className="accordion-body">{track.content}</div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         ) : (
+//           // Desktop view: Tabs
+//           <>
+//             <ul className="nav nav-tabs justify-content-center mb-3">
+//               {tracks.map((track) => (
+//                 <li className="nav-item" key={track.id}>
+//                   <button
+//                     className={`nav-link ${activeTab === track.id ? "active" : ""}`}
+//                     onClick={() => setActiveTab(track.id)}
+//                   >
+//                     {track.title}
+//                   </button>
+//                 </li>
+//               ))}
+//             </ul>
+
+//             <div className="tab-content bg-white p-4 border rounded shadow-sm">
+//               {tracks.map(
+//                 (track) =>
+//                   activeTab === track.id && (
+//                     <div className="tab-pane fade show active" key={track.id}>
+//                       <p>{track.content}</p>
+//                     </div>
+//                   )
+//               )}
+//             </div>
+//           </>
+//         )}
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default LearningTracks;
+// import React, { useState, useEffect } from "react";
+// import "./LearningTracks.css";
+
+// const tracks = [
+//   {
+//     id: "frontend",
+//     icon: "bi bi-laptop",
+//     title: "Front-End Development",
+//     content:
+//       "Learn HTML, CSS, JavaScript, React, and responsive design to build stunning user interfaces.",
+//   },
+//   {
+//     id: "backend",
+//     icon: "bi bi-server",
+//     title: "Back-End Development",
+//     content:
+//       "Master databases, Django, REST APIs, and server-side logic to power your applications.",
+//   },
+//   {
+//     id: "data",
+//     icon: "bi bi-bar-chart-line",
+//     title: "Data Analysis",
+//     content:
+//       "Get started with Python, Excel, SQL, and data visualization techniques.",
+//   },
+//   {
+//     id: "ai",
+//     icon: "bi bi-robot",
+//     title: "AI & Machine Learning",
+//     content:
+//       "Explore machine learning, neural networks, and practical AI applications.",
+//   },
+// ];
+
+// const LearningTracks = () => {
+//   const [activeTab, setActiveTab] = useState("frontend");
+//   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+//   useEffect(() => {
+//     const handleResize = () => setIsMobile(window.innerWidth < 768);
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   return (
+//     <section id="tracks" className="py-5">
+//       <div className="container">
+//         <h2 className="text-center mb-4 fw-bold">Learning Tracks</h2>
+
+//         {isMobile ? (
+//           <div className="accordion" id="learningTracksAccordion">
+//             {tracks.map((track, index) => (
+//               <div className="accordion-item" key={track.id}>
+//                 <h2 className="accordion-header" id={`heading-${track.id}`}>
+//                   <button
+//                     className={`accordion-button ${
+//                       activeTab !== track.id ? "collapsed" : ""
+//                     }`}
+//                     type="button"
+//                     onClick={() =>
+//                       setActiveTab(activeTab === track.id ? "" : track.id)
+//                     }
+//                     aria-expanded={activeTab === track.id}
+//                     aria-controls={`collapse-${track.id}`}
+//                   >
+//                     <i className={`${track.icon} me-2`}></i> {track.title}
+//                   </button>
+//                 </h2>
+//                 <div
+//                   id={`collapse-${track.id}`}
+//                   className={`accordion-collapse collapse ${
+//                     activeTab === track.id ? "show" : ""
+//                   }`}
+//                   aria-labelledby={`heading-${track.id}`}
+//                   data-bs-parent="#learningTracksAccordion"
+//                 >
+//                   <div className="accordion-body">{track.content}</div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         ) : (
+//           <>
+//             <ul className="nav nav-tabs justify-content-center mb-3">
+//               {tracks.map((track) => (
+//                 <li className="nav-item" key={track.id}>
+//                   <button
+//                     className={`nav-link ${
+//                       activeTab === track.id ? "active" : ""
+//                     }`}
+//                     onClick={() => setActiveTab(track.id)}
+//                   >
+//                     <i className={`${track.icon} me-2`}></i>
+//                     {track.title}
+//                   </button>
+//                 </li>
+//               ))}
+//             </ul>
+//             <div className="tab-content p-4">
+//               {tracks.map(
+//                 (track) =>
+//                   activeTab === track.id && (
+//                     <div key={track.id} className="tab-pane active show fade">
+//                       <p>{track.content}</p>
+//                     </div>
+//                   )
+//               )}
+//             </div>
+//           </>
+//         )}
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default LearningTracks;
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./LearningTracks.css"; // Add styles as needed
+
+const tracksData = {
+  basic: [
+    {
+      title: "HTML & CSS",
+      description: "Master the foundation of web development.",
+    },
+    {
+      title: "Responsive Design",
+      description: "Make your websites look good on all devices.",
+    },
+    {
+      title: "JavaScript Basics",
+      description: "Add interactivity to your pages.",
+    },
+  ],
+  intermediate: [
+    {
+      title: "JavaScript DOM",
+      description: "Manipulate HTML & CSS with JavaScript.",
+    },
+    {
+      title: "Git & GitHub",
+      description: "Version control your projects like a pro.",
+    },
+    {
+      title: "ES6+ Features",
+      description: "Modern JavaScript tools and syntax.",
+    },
+  ],
+  advanced: [
+    {
+      title: "React.js",
+      description: "Build powerful UIs with React.",
+    },
+    {
+      title: "APIs & Fetch",
+      description: "Connect your app with live data.",
+    },
+    {
+      title: "Project Deployment",
+      description: "Put your web app live on the internet.",
+    },
+  ],
+};
 
 const LearningTracks = () => {
-  const [activeTab, setActiveTab] = useState("frontend");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [activeTrack, setActiveTrack] = useState("basic");
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    AOS.init({ duration: 600 });
   }, []);
+
+  const handleTabClick = (track) => {
+    setActiveTrack(track);
+    AOS.refresh(); // Re-apply animations on tab switch
+  };
 
   return (
     <section id="tracks" className="py-5 bg-light">
       <div className="container">
-        <h2 className="text-center mb-4 fw-bold">Explore Learning Tracks</h2>
+        <h2 className="text-center mb-4 fw-bold">Learning Tracks</h2>
 
-        {isMobile ? (
-          // Mobile view: Accordion
-          <div className="accordion" id="trackAccordion">
-            {tracks.map((track) => (
-              <div className="accordion-item" key={track.id}>
-                <h2 className="accordion-header" id={`heading-${track.id}`}>
-                  <button
-                    className={`accordion-button ${
-                      activeTab !== track.id ? "collapsed" : ""
-                    }`}
-                    type="button"
-                    onClick={() =>
-                      setActiveTab((prev) => (prev === track.id ? "" : track.id))
-                    }
-                  >
-                    {track.title}
+        {/* Tabs */}
+        <div className="d-flex justify-content-center flex-wrap gap-3 mb-4">
+          {["basic", "intermediate", "advanced"].map((track) => (
+            <button
+              key={track}
+              className={`btn ${
+                activeTrack === track ? "btn-primary" : "btn-outline-primary"
+              }`}
+              onClick={() => handleTabClick(track)}
+            >
+              {track.charAt(0).toUpperCase() + track.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        {/* Track Content */}
+        <div className="row g-4">
+          {tracksData[activeTrack].map((item, index) => (
+            <div
+              key={index}
+              className="col-md-4"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div className="card h-100 shadow-sm">
+                <div className="card-body d-flex flex-column">
+                  <h5 className="card-title fw-semibold">{item.title}</h5>
+                  <p className="card-text flex-grow-1">{item.description}</p>
+                  <button className="btn btn-outline-primary mt-3">
+                    Start this Track
                   </button>
-                </h2>
-                <div
-                  id={`collapse-${track.id}`}
-                  className={`accordion-collapse collapse ${
-                    activeTab === track.id ? "show" : ""
-                  }`}
-                  aria-labelledby={`heading-${track.id}`}
-                  data-bs-parent="#trackAccordion"
-                >
-                  <div className="accordion-body">{track.content}</div>
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          // Desktop view: Tabs
-          <>
-            <ul className="nav nav-tabs justify-content-center mb-3">
-              {tracks.map((track) => (
-                <li className="nav-item" key={track.id}>
-                  <button
-                    className={`nav-link ${activeTab === track.id ? "active" : ""}`}
-                    onClick={() => setActiveTab(track.id)}
-                  >
-                    {track.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-
-            <div className="tab-content bg-white p-4 border rounded shadow-sm">
-              {tracks.map(
-                (track) =>
-                  activeTab === track.id && (
-                    <div className="tab-pane fade show active" key={track.id}>
-                      <p>{track.content}</p>
-                    </div>
-                  )
-              )}
             </div>
-          </>
-        )}
+          ))}
+        </div>
       </div>
     </section>
   );

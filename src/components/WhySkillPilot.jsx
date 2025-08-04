@@ -156,7 +156,7 @@ const WhySkillPilot = () => {
           {/* Optional image */}
           <div className="col-lg-6 text-center" data-aos="fade-left">
             <img
-              src="https://cdn.pixabay.com/photo/2017/01/10/23/01/code-1970466_1280.jpg"
+              // src="https://cdn.pixabay.com/photo/2017/01/10/23/01/code-1970466_1280.jpg"
               alt="Why SkillPilot"
               className="img-fluid rounded shadow"
             />
